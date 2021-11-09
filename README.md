@@ -17,4 +17,14 @@ services:
       # $ needs to be escaped as $$
       - DOMAIN_REGEX=gitdeploy.xyz$$
     restart: always
+    volumes:
+      - path/to/your/config/default.conf:/etc/nginx/conf.d/default.conf:ro
+```
+
+The routings are defined in the file /etc/nginx/conf.d/locations.conf, like that:
+```
+location / {
+  proxy_pass http://dnt:5000/;
+  proxy_read_timeout 1800;
+}
 ```

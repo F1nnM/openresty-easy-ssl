@@ -24,6 +24,9 @@ RUN openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 \
 COPY ./nginxReloader.sh /usr/local/openresty/bin/nginxReloader.sh
 COPY ./docker-entrypoint.sh /usr/local/openresty/bin/docker-entrypoint.sh
 
+COPY ./nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY ./ssl.conf /etc/nginx/conf.d/ssl.conf
+
 RUN chmod +x /usr/local/openresty/bin/nginxReloader.sh
 RUN chmod +x /usr/local/openresty/bin/docker-entrypoint.sh
 
