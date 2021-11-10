@@ -21,10 +21,20 @@ services:
       - path/to/your/config/default.conf:/etc/nginx/conf.d/default.conf:ro
 ```
 
-The routings are defined in the file /etc/nginx/conf.d/locations.conf, like that:
+The routings are defined in the file /etc/nginx/conf.d/server.conf, like that:
 ```
-location / {
-  proxy_pass http://dnt:5000/;
-  proxy_read_timeout 1800;
+server {
+  listen 443 ssl;
+
+  # if this block is included, it will be encrypted
+  ssl_certificate_by_lua_block {
+    auto_ssl:ssl_certificate()
+  }
+
+  location / {
+    proxy_pass http://dnt:5000/;
+    proxy_read_timeout 1800;
+  }
+
 }
 ```
