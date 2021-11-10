@@ -18,10 +18,10 @@ services:
       - DOMAIN_REGEX=gitdeploy.xyz$$
     restart: always
     volumes:
-      - path/to/your/config/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - path/to/your/config/servers.conf:/etc/nginx/conf.d/servers.conf:ro
 ```
 
-The routings are defined in the file /etc/nginx/conf.d/server.conf, like that:
+The routings are defined in the file /etc/nginx/conf.d/servers.conf, like that:
 ```
 server {
   listen 443 ssl;
